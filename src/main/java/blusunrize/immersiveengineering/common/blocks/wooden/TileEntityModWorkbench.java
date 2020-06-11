@@ -1,6 +1,7 @@
 package blusunrize.immersiveengineering.common.blocks.wooden;
 
 import blusunrize.immersiveengineering.common.blocks.TileEntityIEBase;
+import blusunrize.immersiveengineering.common.items.ItemEngineersBlueprint;
 import blusunrize.immersiveengineering.common.items.ItemUpgradeableTool;
 import blusunrize.immersiveengineering.common.util.Utils;
 import cpw.mods.fml.relauncher.Side;
@@ -10,6 +11,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.lang.System;
 
 public class TileEntityModWorkbench extends TileEntityIEBase implements IInventory
 {
@@ -98,9 +101,10 @@ public class TileEntityModWorkbench extends TileEntityIEBase implements IInvento
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack)
 	{
+		System.out.println(stack.getItem() instanceof ItemEngineersBlueprint);
 		if (dummy)
 			return false;
-		return stack!=null&&stack.getItem() instanceof ItemUpgradeableTool;
+		return stack!=null && stack.getItem() instanceof ItemUpgradeableTool && !(stack.getItem() instanceof ItemEngineersBlueprint);
 	}
 	
 	@Override

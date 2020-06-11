@@ -27,21 +27,20 @@ public class TileEntityWindmill extends TileEntityIEBase
 		if(!canTurn)
 			return;
 
-		double mod = .00005;
+		double mod = 0.00005;
 		if(!worldObj.isRaining())
-			mod *= .75;
+			mod *= 0.75;
 		if(!worldObj.isThundering())
-			mod *= .66;
+			mod *= 0.66;
 		if(yCoord>200)
 			mod *= 2;
-		else if(yCoord>150)
-			mod *= 1.5;
 		else if(yCoord>100)
+			mod *= 1.5;
+		else if(yCoord>64)
 			mod *= 1.25;
-		else if(yCoord<70)
-			mod *= .33;
+		else if(yCoord<64)
+			mod *= 0.10;
 		mod*=getSpeedModifier();
-		
 		
 		prevRotation = (float) (turnSpeed*mod);
 		rotation += turnSpeed*mod;
@@ -58,7 +57,7 @@ public class TileEntityWindmill extends TileEntityIEBase
 					return;
 				else if((facing==4||facing==5)&&dynamo.facing!=4&&dynamo.facing!=5)
 					return;
-				double power = turnSpeed*mod * 400;
+				double power = turnSpeed*mod * 400 * Config.getDouble("windmill_multiplier");
 				dynamo.inputRotation(Math.abs(power), ForgeDirection.OPPOSITES[facing]);
 			}
 		}

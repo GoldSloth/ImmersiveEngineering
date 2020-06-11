@@ -113,7 +113,7 @@ public class IERecipes
 		ChestGenHooks.getInfo(ChestGenHooks.STRONGHOLD_LIBRARY).addItem(new WeightedRandomChestContent(new ItemStack(IEContent.itemBlueprint,1,blueprint), 1,1, 10));
 		ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(new WeightedRandomChestContent(new ItemStack(IEContent.itemBlueprint,1,blueprint), 1,1, 2));
 		if(Config.getBoolean("arcfurnace_electrodeCrafting"))
-			addOredictRecipe(new ItemStack(IEContent.itemBlueprint,1,blueprint), "GGG","GDG","GPG", 'G',"ingotHOPGraphite", 'D',"dyeBlue",'P',Items.paper);
+		addOredictRecipe(new ItemStack(IEContent.itemGraphiteElectrode,1), "G  "," G ","  G", 'G',"ingotHOPGraphite");
 
 		addOredictRecipe(new ItemStack(IEContent.itemSkyhook,1,0), "II ","IC "," GG", 'C',componentIron,'I',"ingotSteel", 'G',new ItemStack(IEContent.itemMaterial,1,9));
 

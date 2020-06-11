@@ -187,7 +187,7 @@ public abstract class IESlot extends Slot
 		@Override
 		public boolean isItemValid(ItemStack itemStack)
 		{
-			return itemStack!=null && itemStack.getItem() instanceof IUpgradeableTool && ((IUpgradeableTool)itemStack.getItem()).canModify(itemStack);
+			return itemStack!=null && itemStack.getItem() instanceof IUpgradeableTool && ((IUpgradeableTool)itemStack.getItem()).canModify(itemStack) && !(itemStack.getItem() instanceof ItemEngineersBlueprint);
 		}
 		@Override
 		public int getSlotStackLimit()

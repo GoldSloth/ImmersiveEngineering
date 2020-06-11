@@ -167,6 +167,8 @@ public class Config
 		setInt("charger_consumption", config.get("machines", "ChargingStation: Charge", 4000, "The RF per tick the Charging Station can insert into an item").getInt());
 		setInt("preheater_consumption", config.get("machines", "BlastFurnacePreheater: Charge", 32, "The RF per tick the Blast Furnace Preheater will consume to speed up the Blast Furnace").getInt());
 		
+		setDouble("windmill_multiplier", config.get("machines", "Windmill: Power", 1, "Multiplier for the power output of windmills").getDouble());
+		setInt("dieselengine_multiplier", config.get("machines", "DieselEngine: Burntime", 1, "Multiplier for the burntime for fuel in a diesel engine").getInt());
 
 		setIntArray("ore_copper", config.get("oregen", "Copper", new int[]{8, 40,72, 8,100}, "Generation config for Copper Ore. Parameters: Blocks per vein, lowest possible Y, highest possible Y, veins per chunk, chance for vein to spawn (out of 100). Set vein size to 0 to disable the generation").getIntList());
 		setIntArray("ore_bauxite", config.get("oregen", "Bauxite", new int[]{4, 40,85, 8,100}, "Generation config for Bauxite Ore. Parameters: Blocks per vein, lowest possible Y, highest possible Y, veins per chunk, chance for vein to spawn (out of 100). Set vein size to 0 to disable the generation").getIntList());

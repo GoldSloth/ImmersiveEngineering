@@ -106,7 +106,7 @@ public class TileEntityDieselGenerator extends TileEntityMultiblockPart implemen
 
 			if(run && tank.getFluid()!=null && tank.getFluid().getFluid()!=null)
 			{
-				int burnTime = DieselHandler.getBurnTime(tank.getFluid().getFluid());
+				int burnTime = Config.getInt("dieselengine_multiplier")*DieselHandler.getBurnTime(tank.getFluid().getFluid());
 				int fluidConsumed = 1000/burnTime;
 				int output = Config.getInt("dieselGen_output");
 				int connected = 0;
