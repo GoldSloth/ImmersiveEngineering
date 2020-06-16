@@ -7,6 +7,7 @@ import blusunrize.immersiveengineering.common.IEContent;
 import blusunrize.immersiveengineering.common.blocks.IEBlockInterfaces.ISoundTile;
 import blusunrize.immersiveengineering.common.blocks.multiblocks.MultiblockDieselGenerator;
 import blusunrize.immersiveengineering.common.util.IESound;
+
 import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyReceiver;
 import cpw.mods.fml.relauncher.Side;
@@ -23,6 +24,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraft.client.Minecraft;
 
 public class TileEntityDieselGenerator extends TileEntityMultiblockPart implements IFluidHandler, ISoundTile, IEnergyConnection
 {
@@ -79,7 +81,7 @@ public class TileEntityDieselGenerator extends TileEntityMultiblockPart implemen
 			}
 			if(fanFadeOut>0)
 			{
-				step += (fanFadeOut/80f)*base;
+				step += (fanFadeOut/80f)*base; 
 				fanFadeOut--;
 			}
 			fanRotationStep = step;
@@ -91,8 +93,9 @@ public class TileEntityDieselGenerator extends TileEntityMultiblockPart implemen
 
 		if(worldObj.isRemote)
 		{
+			
 			ImmersiveEngineering.proxy.handleTileSound("dieselGenerator", this, active, .5f,1);
-			if(active && worldObj.getTotalWorldTime()%4==0)
+			if(active && worldObj.getTotalWorldTime()%4==0 && shouldSpawnParticle(xCoord+.5+(facing==4?1.25:facing==5?-1.25: facing==(mirrored?2:3)?.625:-.625), yCoord+2.25, zCoord+.5+(facing==2?1.25:facing==3?-1.25: facing==(mirrored?5:4)?.625:-.625)))
 				worldObj.spawnParticle("largesmoke", xCoord+.5+(facing==4?1.25:facing==5?-1.25: facing==(mirrored?2:3)?.625:-.625), yCoord+2.25, zCoord+.5+(facing==2?1.25:facing==3?-1.25: facing==(mirrored?5:4)?.625:-.625), 0,0,0);
 		}
 		else

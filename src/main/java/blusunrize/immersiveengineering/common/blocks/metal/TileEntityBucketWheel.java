@@ -68,7 +68,7 @@ public class TileEntityBucketWheel extends TileEntityMultiblockPart
 		}
 
 		if(worldObj.isRemote){
-			if(particleStack!=null)
+			if(particleStack!=null && shouldSpawnParticle(xCoord, yCoord, zCoord))
 			{
 				ImmersiveEngineering.proxy.spawnBucketWheelFX(this, particleStack);
 				particleStack = null;

@@ -1,5 +1,8 @@
 package blusunrize.immersiveengineering.common.blocks;
 
+import blusunrize.immersiveengineering.common.Config;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -38,5 +41,10 @@ public abstract class TileEntityIEBase extends TileEntity
 	
 	public void receiveMessageFromClient(NBTTagCompound message)
 	{
+	}
+
+	public boolean shouldSpawnParticle(double posx, double posy, double posz) {
+		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		return (Math.pow(player.posX-posx, 2) + Math.pow(player.posY-posy, 2) + Math.pow(player.posZ-posz, 2)) < Config.getDouble("machine_particle_render_distance");
 	}
 }

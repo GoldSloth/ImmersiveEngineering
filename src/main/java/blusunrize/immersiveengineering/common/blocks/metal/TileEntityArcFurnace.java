@@ -74,7 +74,7 @@ public class TileEntityArcFurnace extends TileEntityMultiblockPart implements IE
 		{
 			if(pouringMetal>0)
 				pouringMetal--;
-			if(active)
+			if(active && shouldSpawnParticle(xCoord, yCoord, zCoord))
 				for(int i=0; i<4; i++)
 				{
 					if(worldObj.rand.nextInt(6)==0)

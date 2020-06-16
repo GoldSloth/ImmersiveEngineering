@@ -48,7 +48,7 @@ public class TileEntityChargingStation extends TileEntityIEBase implements IEner
 				for(int i=0; i<max; i++)
 				{
 					long time = worldObj.getTotalWorldTime();
-					if(charge>=1 || (time%12>=i*4&&time%12<=i*4+2))
+					if(charge>=1 || (time%12>=i*4&&time%12<=i*4+2) && shouldSpawnParticle(xCoord, yCoord, zCoord))
 					{
 						int shift = i-1;
 						double x = xCoord+.5+(facing==4?-.46875:facing==5?.46875: facing==2?(-.1875*shift): (.1875*shift));
