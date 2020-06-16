@@ -9,7 +9,6 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-    }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
@@ -17,7 +16,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.7.7"
+version = "0.7.71"
 group= "blusunrize"
 archivesBaseName = "ImmersiveEngineering"
 
@@ -74,4 +73,13 @@ task apiZip(type: Zip) {
 artifacts {
 	archives deobfJar
 	archives apiZip
+}
+
+runClient {
+	jvmArgs "-Xmx3G"
+}
+
+runServer {
+	jvmArgs "-Xmx3G"
+	args "nogui"
 }
