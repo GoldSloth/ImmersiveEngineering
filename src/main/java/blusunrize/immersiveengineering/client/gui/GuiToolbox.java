@@ -6,7 +6,10 @@ import org.lwjgl.opengl.GL11;
 
 import blusunrize.immersiveengineering.client.ClientUtils;
 import blusunrize.immersiveengineering.common.gui.ContainerToolbox;
+import blusunrize.immersiveengineering.common.items.ItemToolbox;
 import blusunrize.immersiveengineering.common.util.Lib;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -17,15 +20,20 @@ import net.minecraft.world.World;
 
 public class GuiToolbox extends GuiContainer
 {
+	InventoryPlayer playerInv;
 	public GuiToolbox(InventoryPlayer inventoryPlayer, World world)
 	{
 		super(new ContainerToolbox(inventoryPlayer, world));
 		this.ySize=238;
+		playerInv = inventoryPlayer;
 	}
 
 	@Override
 	public void drawScreen(int mx, int my, float partial)
-	{
+	{	
+		if (!(playerInv.getCurrentItem() != null &&  playerInv.getCurrentItem().getItem() instanceof ItemToolbox)) {
+			Minecraft.getMinecraft().displayGuiScreen((GuiScreen)null);
+		}
 		super.drawScreen(mx, my, partial);
 		ArrayList<String> tooltip = new ArrayList<String>();
 		int slot = -1;
