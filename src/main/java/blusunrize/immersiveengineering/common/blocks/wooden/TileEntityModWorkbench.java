@@ -101,7 +101,6 @@ public class TileEntityModWorkbench extends TileEntityIEBase implements IInvento
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack)
 	{
-		System.out.println(stack.getItem() instanceof ItemEngineersBlueprint);
 		if (dummy)
 			return false;
 		return stack!=null && stack.getItem() instanceof ItemUpgradeableTool && !(stack.getItem() instanceof ItemEngineersBlueprint);
